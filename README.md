@@ -56,7 +56,7 @@ This finishes up the ADFS configuration - but some additional notes are required
 
 If a user does not have the attribute (for instance - your NameID transform takes the E-mail attribute and transforms it to NameID, and the user does not have the E-mail attribute defined) - the login will fail with an "Invalid NameID Policy " exception on the SimpleSAMLphp SP side and it's going to be hard to track down, because it's actually not a NameID Policy issue, but rather an error on the AD side that happens because there is no attribute to transform to the NameID. I've spent an entire day on debugging this thinking it's a SimpleSAMLphp issue, but it turned out to be a simple missing attribute problem on the test user I was logging in with.
 
-OpenLDAP on Linux has an attribute 'entryUUID' which is a unique identifier 
+OpenLDAP on Linux has an attribute 'entryUUID' which is a unique identifier for every LDAP entry - I'm not sure that sort of attribute exists in AD, but I would be partial to using something similar as the attribute to transform to the NameID.
 
 This is all you should know for how to configure SimpleSAMLphp and ADFS to work together properly.
 
