@@ -3,9 +3,10 @@
 ## SimpleSAMLphp configuration
 
 1) Download ADFS Metadata
-    * Find the ADFS Metadata url - open Tools -> AD FS Management, on the left menu go to Service -> Endpoints, scroll down to Metadata, verify that Metadata with type "Federation Metadata" is enabled and copy the URL Path. Default value should be something like /FederationMetadata/2007-06/FederationMetadata.xml.
-    * visit your configured AD server and add the Metadata URL you just copied (e.g. http(s)://your.ad.com/FederationMetadata/2007-06/FederationMetadata.xml) and you will download a .xml file with the ADFS metadata.
-    
+
+- Find the ADFS Metadata url - open Tools -> AD FS Management, on the left menu go to Service -> Endpoints, scroll down to Metadata, verify that Metadata with type "Federation Metadata" is enabled and copy the URL Path. Default value should be something like /FederationMetadata/2007-06/FederationMetadata.xml.
+- visit your configured AD server and add the Metadata URL you just copied (e.g. http(s)://your.ad.com/FederationMetadata/2007-06/FederationMetadata.xml) and you will download a .xml file with the ADFS metadata.
+
 2) Fire up the SimpleSAMLphp metadata converter to convert the XML file to php code you can just paste into the appropriate .php files.
     * visit http(s)://your.simplesaml.sp/simplesaml/admin/metadata-converter.php
     * copy the ADFS Metadata from the .xml file and input it to the "XML Metadata" textbox - click Parse and copy the php code the metadata converter outputs
