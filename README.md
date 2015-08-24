@@ -83,3 +83,5 @@ Also, please take note that this process may be customized in many ways and your
 You will probably have to change multiple steps if you change one - for instance, if you want to use persistent NameID format in the ADFS claim transform to NameID, you will have to use a different value for the 'NameIDPolicy' entry in the SimpleSAMLphp authsorce, something like 'urn:oasis:names:tc:SAML:2.0:nameid-format:persistent' should do the job (untested).
 
 But hopefully it's a good base guide for getting SimpleSAMLphp and ADFS to play well together.
+
+For more information, visit us at https://buckhill.co.uk.
