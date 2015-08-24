@@ -28,7 +28,7 @@ The next step is letting the ADFS know about the SP that will be connecting to i
 - on the right side click Add Relying Party Trust (a wizard will open)
 - click Start
 - **NOTE:** importing data from relying party online or on a local network should work - but I couldn't get it to work. I researched the issue a little bit and it looks like it's some kind of a problem with HTTP 1.1 chunking, but didn't go into too much detail because the alternative (import data about relying party from a file) works just as well.
-- downlad your SimpleSAMLphp SP metadata from http(s)://your.simplesaml.sp/simplesaml/module.php/saml/sp/metadata.php/{authsource_name} - in the case of the test environment this url is https://5qfgdriltoqi.schoolzilla.com/simplesaml/module.php/saml/sp/metadata.php/adfs
+- downlad your SimpleSAMLphp SP metadata from http(s)://your.simplesaml.sp/simplesaml/module.php/saml/sp/metadata.php/adfs
 - choose Import data about the relying party from a file and choose the file you just downloaded
 - continue with your specific settings (display name, multi factor, issuance authorization rules)
 
