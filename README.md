@@ -73,7 +73,7 @@ Append the following code:
                 'saml:SP',
                 'entityID' => NULL,
                 'NameIDPolicy' => 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient',
-                'idp' => 'http://adfspoc.schoolzilla.com/adfs/services/trust'
+                'idp' => 'http://your.ad.com/adfs/services/trust'
         ]
 ```
 
