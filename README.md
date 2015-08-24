@@ -15,6 +15,24 @@
 3) Add the IDP metadata to the SimpleSAMLphp SP
 - go to your SimpleSAMLphp SP installation folder (e.g. /path/to/simplesaml) and append the php code you just copied to /path/to/simplesaml/metadata/saml20-idp-remote.php file.
 
+## SimpleSAMLphp authsource
+
+The last part that needs explaining is how to add the ADFS authsource to SimpleSAMLphp.
+
+You need to edit the /path/to/simplesaml/config/authsources.php file.
+
+Append the following code:
+
+```php
+    'adfs' => [
+                'saml:SP',
+                'entityID' => NULL,
+                'NameIDPolicy' => 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient',
+                'idp' => 'http://your.ad.com/adfs/services/trust'
+        ]
+```
+The 'saml:SP' bit is required if you're running the SimpleSAMLphp instance in IDP + SP mode so that it's possible to get both SP and IDP metadata - otherwise just get the SP metadata as you usually do.
+
 This process should ensure that your SimpleSAMLphp SP knows about the ADFS IDP.
 
 The next step is letting the ADFS know about the SP that will be connecting to it as the IDP.
@@ -28,7 +46,7 @@ The next step is letting the ADFS know about the SP that will be connecting to i
 - on the right side click Add Relying Party Trust (a wizard will open)
 - click Start
 - **NOTE:** importing data from relying party online or on a local network should work - but I couldn't get it to work. I researched the issue a little bit and it looks like it's some kind of a problem with HTTP 1.1 chunking, but didn't go into too much detail because the alternative (import data about relying party from a file) works just as well.
-- downlad your SimpleSAMLphp SP metadata from http(s)://your.simplesaml.sp/simplesaml/module.php/saml/sp/metadata.php/adfs
+- downlad your SimpleSAMLphp SP metadata from http(s)://your.simplesaml.sp/simplesaml/module.php/saml/sp/metadata.php/adfs - alternatively you can access your SimpleSAMLphp instance via the web interface, go to Federation tab and get the SAML 2.0 SP Metadata.
 - choose Import data about the relying party from a file and choose the file you just downloaded
 - continue with your specific settings (display name, multi factor, issuance authorization rules)
 
@@ -59,23 +77,6 @@ If a user does not have the attribute (for instance - your NameID transform take
 OpenLDAP on Linux has an attribute 'entryUUID' which is a unique identifier for every LDAP entry - I'm not sure that sort of attribute exists in AD, but I would be partial to using something similar as the attribute to transform to the NameID.
 
 This is all you should know for how to configure SimpleSAMLphp and ADFS to work together properly.
-
-## SimpleSAMLphp authsource
-
-The last part that needs explaining is how to add the ADFS authsource to SimpleSAMLphp.
-
-You need to edit the /path/to/simplesaml/config/authsources.php file.
-
-Append the following code:
-
-```php
-    'adfs' => [
-                'saml:SP',
-                'entityID' => NULL,
-                'NameIDPolicy' => 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient',
-                'idp' => 'http://your.ad.com/adfs/services/trust'
-        ]
-```
 
 Also, please take note that this process may be customized in many ways and your MMV with this guide.
 
