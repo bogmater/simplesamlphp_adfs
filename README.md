@@ -31,7 +31,7 @@ Append the following code:
                 'idp' => 'http://your.ad.com/adfs/services/trust'
         ]
 ```
-The 'saml:SP' bit is required if you're running the SimpleSAMLphp instance in IDP + SP mode so that it's possible to get both SP and IDP metadata - otherwise just get the SP metadata as you usually do.
+The 'saml:SP' bit is required if you're running the SimpleSAMLphp instance in IDP + SP mode so that it's possible to get both SP and IDP metadata.
 
 This process should ensure that your SimpleSAMLphp SP knows about the ADFS IDP.
 
